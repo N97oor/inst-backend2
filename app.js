@@ -16,7 +16,7 @@ yargs.command({
         },
     },
     handler  : (x)=> {
-        data10.addperson(x.id ,x.fname , x.lname , x.city , x.age,x.job , x.avg = (x.arbic + x.English + x.math + x.french + x.bilogy + x.chemctry) / 6);
+        data10.addperson(x.id ,x.fname , x.lname , x.city , x.age,x.job , x.avg = (x.arabic + x.english + x.math + x.french + x.bilogy + x.chemctry) / 6);
     }
 })
 yargs.command({
