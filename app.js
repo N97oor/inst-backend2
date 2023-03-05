@@ -1,73 +1,57 @@
- 
-
- const  fs = require ("fs")
-
-  const validator = require("validator")
-
-// yargs : parsing 
-
- const yargs = require("yargs")
-
-
-  
-const data10 = require ("./data10")
-
+const yargs = require("yargs")
+const  data10 = require("./data10")
 yargs.command({
-    command : "add",
-    describe: "to add an item",
-    builder: {
-        fname : {
-            describe: "adding the first name ",
-            demandOption: true,
-            type: "string"
-        },
-        lname : {
-            describe: "adding the last name ",
-            demandOption: true,
-            type: "string"
-        }
-    },
-    handler: (x)=> {
-        // console.log("you have already added the item")
-        data10.addPerson(x.fname , x.lname , x.city , x.age , x.id ,x.job)
-    }
- })
-
- yargs.command({
-    command : "delete",
-    describe: "to delete an item",
-    handler: (x)=> {
-        data10.deleteData(x.id)
-    }
- })
-
- yargs.command ({
-    command : "read",
-    describe : "to read data",
+    command : "add" ,
+    describe : "add person",
     builder : {
-        id : {
-            describe : "this is id description in read command",
+        fname : {
+            describe : " first name",
             demandOption : true,
             type : "string"
-        }
+        },
+        lname : {
+            describe : " last name",
+            demandOption : true,
+            type : "string"
+        },
     },
-    handler : (x)=> {
-        data10.readData (x.id)
+    handler  : (x)=> {
+        data10.addperson(x.id ,x.fname , x.lname , x.city , x.age,x.job , x.avg = (x.arbic + x.English + x.math + x.french + x.bilogy + x.chemctry) / 6);
     }
- })
-
-
- yargs.command ({
-    command :"list",
-    describe : "list data",
-    handler : ()=>{
-        data10.listData()
+})
+yargs.command({
+    command : "delete" ,
+    describe : "delete person",
+    handler  : (x)=> {
+       data10.deleted(x.id)
     }
- })
- 
-yargs.parse() 
-   
-  
+})
+// ////////  /////////////////////////// 
+yargs.command({
+    command : "read" ,
+    describe : "read the info of person",
+    builder  : {
+        id : {
+            describe : "read info",
+            demandOption : true,
+            type : "string"
+        },
+    },
+        handler : (x) => {
+            data10.read(x.id)
+        }
+        })
+// //////////////// ////////////////////
+yargs.command({
+    command : "list" ,
+    describe : "list info of person",
+    handler : () =>{
+        data10.list()
+    }
+})
+
+console.log(yargs.argv);
+
 
 
 
